@@ -11,7 +11,7 @@ class App extends Component {
   constructor(){
     super()
     this.state={
-      name : []
+      movies:[]
     }
   }
 
@@ -20,8 +20,7 @@ class App extends Component {
     .then(response=>{
       return response.json();
     })
-    .then(users => this.setState())
-    .then(console.log('apple'));
+    .then(users => {this.setState({movies: users})});
 
    
   }
@@ -33,7 +32,7 @@ class App extends Component {
       <div className='tc'>
         <Title/>
         <SearchBox/>
-        <Cardlist/>
+        <Cardlist movies={this.state.movies} />
       </div>
     );
   }
